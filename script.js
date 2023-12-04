@@ -16,7 +16,8 @@ Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è
 // SELEZIONE degli elementi nel DOM
 const btnUp = document.querySelector(".fa-chevron-up");
 const btnDown = document.querySelector(".fa-chevron-down");
-const mainCarousel = document.getElementById("carosello")
+const mainCarousel = document.getElementById("carosello");
+const imgContainer = document.querySelector("img-container");
 
 
 // FUNZIONE che permetta di generare elementi e di assegnare una classe
@@ -54,39 +55,30 @@ const images = [
         image: 'img/05.webp', 
         title: "Marvel's Avengers", 
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.' 
-    } 
+    }, 
+    
+]; console.log(images[4]);
 
-];
-console.log(images);
-
-
-
-// GENERARE la struttura HTML del carosello
+// GENERARE l'HTML
 mainCarousel.innerHTML = `
-
-    <div class="slider">
         <div class="items-container">
             <i class="fa-solid fa-chevron-up"></i>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
-        <img src="img/01.webp" alt="">
-    </div>
-
+        <div class="img-container">
+            <img src="${images[0].image}" alt="">
+        </div>
 `
 
+// AL CLICK sul bottone giù faccio in modo che cambi il numero dell'oggetto di riferimento. Di base è settato su 0 (vedi riga 69).
+btnDown.addEventListener("click",
 
-btnDown.addEventListener ("click", function () {
-
-    
-
-
-
-
-
+    function () {
+        for (let i = 0; i < images.length; i++) {
+            images[i].image = 1;
+        }
+        
     }
-
-
-
 
 
 )

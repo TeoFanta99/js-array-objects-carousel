@@ -7,17 +7,15 @@ Come nel primo carosello realizzato, focalizziamoci prima sulla creazione del ma
 
 Milestone 1:
 Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
-Al click dell’utente sulle frecce verso sinistra o destra, l’immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
+Al click dell’utente sulle frecce verso sinistra o destra, l’immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo. FATTO
 
 Milestone 2:
-Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra.
+Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra. FATTO
 */
 
 // SELEZIONE degli elementi nel DOM
 const btnUp = document.querySelector(".fa-chevron-up");
 const btnDown = document.querySelector(".fa-chevron-down");
-const mainCarousel = document.getElementById("carosello");
-const imgContainer = document.querySelector("img-container");
 const immagineCarosello = document.getElementById("immagine");
 const titoloCarosello = document.getElementById("titolo");
 const testoCarosello = document.getElementById("testo");
@@ -54,20 +52,44 @@ const images = [
     
 ];
 
-// GENERARE l'HTML
-mainCarousel.innerHTML = 
-`
-        <div class="slider">
-        <div class="img-container">
-            <img id="immagine" src="${images[0].image}" alt="">
-        </div>
-        <div class="text-container">
-            <h2 id="titolo">${images[0].title}</h2>
-            <p id="testo">${images[0].text}</p>
-        </div>
-        <div class="items-container">
-            <i class="fa-solid fa-chevron-up"></i>
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        </div>
-`
+// DICHIARO l'indice dell'immagine attualmente visualizzata
+let currentIndex = 0;
+
+
+// FUNZIONE che imposta l'indice corrente
+function selezionaOggetto(i) {
+    currentIndex = i;
+
+    if (i >= 0 && i < images.length) {
+
+        // ci restituisce l'oggetto che desideriamo
+        currentImage = images[i];
+
+        // ci restituisce il valore dell'oggetto che vogliamo
+        immagineCarosello.src = currentImage.image;
+        titoloCarosello.innerHTML = currentImage.title;
+        testoCarosello.innerHTML = currentImage.text;
+    }
+};
+
+
+// IMPOSTO la prima immagine dell'array
+selezionaOggetto(0);
+
+
+// FUNZIONE next click
+function next() {
+    currentIndex = (currentIndex + 1) % images.length;
+    selezionaOggetto(currentIndex);
+}
+btnDown.addEventListener("click", next);
+
+
+// FUNZIONE prev click
+function prev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    selezionaOggetto(currentIndex);
+}
+btnUp.addEventListener("click", prev);
+
+

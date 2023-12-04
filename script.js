@@ -18,14 +18,9 @@ const btnUp = document.querySelector(".fa-chevron-up");
 const btnDown = document.querySelector(".fa-chevron-down");
 const mainCarousel = document.getElementById("carosello");
 const imgContainer = document.querySelector("img-container");
-
-
-// FUNZIONE che permetta di generare elementi e di assegnare una classe
-function generaUnElemento (tagtype, classname) {
-    const element = document.createElement(tagtype);
-    element.classList.add(classname);
-    return element
-};
+const immagineCarosello = document.getElementById("immagine");
+const titoloCarosello = document.getElementById("titolo");
+const testoCarosello = document.getElementById("testo");
 
 
 // ARRAY di oggetti 
@@ -57,28 +52,22 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.' 
     }, 
     
-]; console.log(images[4]);
+];
 
 // GENERARE l'HTML
-mainCarousel.innerHTML = `
+mainCarousel.innerHTML = 
+`
+        <div class="slider">
+        <div class="img-container">
+            <img id="immagine" src="${images[0].image}" alt="">
+        </div>
+        <div class="text-container">
+            <h2 id="titolo">${images[0].title}</h2>
+            <p id="testo">${images[0].text}</p>
+        </div>
         <div class="items-container">
             <i class="fa-solid fa-chevron-up"></i>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
-        <div class="img-container">
-            <img src="${images[0].image}" alt="">
         </div>
 `
-
-// AL CLICK sul bottone giù faccio in modo che cambi il numero dell'oggetto di riferimento. Di base è settato su 0 (vedi riga 69).
-btnDown.addEventListener("click",
-
-    function () {
-        for (let i = 0; i < images.length; i++) {
-            images[i].image = 1;
-        }
-        
-    }
-
-
-)

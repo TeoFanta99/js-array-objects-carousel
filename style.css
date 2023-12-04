@@ -40,3 +40,11 @@ img {
 .fa-chevron-down {
     bottom: 0;
 }
+
+.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}

@@ -11,7 +11,6 @@ Al click dell’utente sulle frecce verso sinistra o destra, l’immagine attiva
 
 Milestone 2:
 Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra.
-
 */
 
 const images = [ 
@@ -41,5 +40,6 @@ const images = [
         title: "Marvel's Avengers", 
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.', 
     } 
-    
+
 ];
+console.log(images);
